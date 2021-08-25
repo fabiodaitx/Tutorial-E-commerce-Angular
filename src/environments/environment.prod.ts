@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   //baseUrl: 'https://toh-api.herokuapp.com',
-  baseUrl: 'https://app.netlify.com/',
+  baseUrl: 'https://tutorial-e-commerce-angular.netlify.app',
 };
 
 
