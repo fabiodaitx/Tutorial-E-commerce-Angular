@@ -6,7 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      const randomToken = Math.random().toString(36).substr(-10);
+      localStorage.setItem('token', randomToken);
+    }
+  }
 }
+
+
 
 
 /*

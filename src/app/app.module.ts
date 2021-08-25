@@ -10,11 +10,19 @@ import { ProductAlertsComponent } from './product-alerts/product-alerts.componen
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './cart/cart.component';
 import { ShippingComponent } from './shipping/shipping.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
+    environment.production
+    ? []
+    : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      delay: 1000,
+    }),
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: ProductListComponent },

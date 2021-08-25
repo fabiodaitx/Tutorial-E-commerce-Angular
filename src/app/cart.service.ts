@@ -1,16 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from './products';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
+  private heroesUrl = `${environment.baseUrl}/heroes`;
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: localStorage.getItem('token') ?? [],
+    }),
+  };
+
   items: Product[] = [];
   constructor(
     private http: HttpClient
   ) { }
-  
+
   addToCart(product: Product) {
     this.items.push(product);
   }
@@ -27,5 +37,5 @@ export class CartService {
   getShippingPrices() {
     return this.http.get<{type: string, price: number}[]>('/assets/shipping.json');
   }
-  
+
 }
