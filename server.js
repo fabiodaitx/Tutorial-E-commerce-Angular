@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 
 // nome da pasta dentro de dist que sera feito build, ver angular.json
-const appName = "curso-angular-basico";
+const appName = "tutorial-e-commerce-angular";
 
 // local onde build ira gerar os arquivos
 const outputPath = `${__dirname}/dist/${appName}`;
